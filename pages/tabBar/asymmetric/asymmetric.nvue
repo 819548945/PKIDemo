@@ -1,0 +1,172 @@
+<template>
+	<view class="uni-container">
+		<view class="uni-panel" v-for="(item, index) in list" :key="item.id">
+			<view class="uni-panel-h" :class="item.open ? 'uni-panel-h-on' : ''" @click="triggerCollapse(index, item.id)">
+				<text class="uni-panel-text">{{item.name}}</text>
+				<text class="uni-panel-icon uni-icon" :class="item.open ? 'uni-panel-icon-on' : ''">{{item.pages ? '&#xe581;' : '&#xe470;'}}</text>
+			</view>
+			<view class="uni-panel-c" v-if="item.open">
+				<view :class="{'left-win-active': leftWinActive === (item2.url ? item2.url.split('/')[3] : item2) && hasLeftWin}"
+				 class="uni-navigate-item" v-for="(item2,key) in item.pages" :key="key" @click="goDetailPage(item.id, item2)">
+					<text class="uni-navigate-text">{{item2.name ? item2.name : item2}}</text>
+					<text class="uni-navigate-icon uni-icon">&#xe470;</text>
+				</view>
+			</view>
+		</view>
+	</view>
+</template>
+<script>
+	// TODO 修复Android v3 加载过慢问题
+	// #ifdef APP-PLUS
+	var domModule = weex.requireModule('dom');
+	domModule.addRule('fontFace', {
+		'fontFamily': "uniicons",
+		'src': "url('/static/uni.ttf')"
+	});
+	// #endif
+	export default {
+		props: {
+			hasLeftWin: {
+				type: Boolean
+			},
+			leftWinActive: {
+				type: String
+			}
+		},
+		data() {
+			return {
+				list : [
+					{
+						id: 'initKeyPair',
+						name: '秘钥初始化',
+						open: false,
+						pages: [
+							{name:"SM2单证",url:'initSM2O'},
+							{name:"SM2双证",url:'initSM2T'},
+							{name:"RSA单证（CA签发X509）",url:'initRSAO'},
+							{name:"RSA单证（CA签发PFX）",url:'initRSAO1'}
+						]
+					}, 
+					{
+						id: 'showKeyInfo',
+						name: '修改/查看秘钥状态',
+						open: false,
+						pages: [
+							{name:"修改秘钥状态",url:'showKeyInfoOne'},
+							{name:"查看全部秘钥状态",url:'showKeyInfoAll'}
+						]
+					}, 
+					{
+						id: 'signAndVerify',
+						name: '签名/验签',
+						open: false,
+						pages: [
+							{name:"签名",url:'sign'},
+							{name:"内置秘钥验签",url:'verifyByKeyId'},
+							{name:"公钥证书验签",url:'verifyByCert'}
+						]	
+					},
+					{
+						id: 'encAndDec',
+						name: '加密/解密',
+						open: false,
+						pages: [
+							{name:"内置秘钥加密",url:'encByKeyId'},
+							{name:"公钥证书加密",url:'encByCert'},
+							{name:"解密",url:'dec'}
+						]
+					},
+					{
+						id: 'cert',
+						name: '公钥证书相关',
+						open: false,
+						pages: [
+							{name:"读取X509公钥证书",url:'readX509'},
+							{name:"读取内置秘钥X509公钥证书",url:'readX509ByKeyId'},	
+							{name:"读取P7B(C)证书链",url:'readP7B'},
+						]
+					},
+					{
+						id: 'export',
+						name: '秘钥导出',
+						open: false,
+						pages: [
+							{name:"导出X509公钥证书",url:'readX509Base64ByKeyId'},
+							{name:"导出RSA PFX",url:'exportPFX'},	
+							{name:"导出SM2 私钥（EnvelopedKeyBlob格式）",url:'exportEnvelopedKeyBlob'},
+						]
+					}
+				]
+			   
+			};
+		},
+		// #ifdef H5
+		watch: {
+			$route: {
+				immediate: true,
+				handler(newRoute) {
+					if (newRoute.matched.length) {
+						let path = newRoute.path.split('/')[3]
+						for (const item of this.list) {
+							if (Array.isArray(item.pages)) {
+								for (const page of item.pages) {
+									if (page === path || page.url && page.url === newRoute.path) {
+										item.open = true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		// #endif
+		methods: {
+			triggerCollapse(e, id) {
+				if (!this.list[e].pages) {
+					this.goDetailPage('', this.list[e].url);
+					return;
+				}
+				for (var i = 0; i < this.list.length; ++i) {
+					if (e === i) {
+						this.list[i].open = !this.list[i].open;
+					} else {
+						this.list[i].open = false;
+					}
+				}
+			},
+			goDetailPage(panel, e) {
+				
+				if (typeof e === 'string') {
+					const url = '/pages/tabBar/asymmetric/' + e + '/' + e
+					if (this.hasLeftWin) {
+						uni.reLaunch({
+							url: url
+						})
+					} else {
+						uni.navigateTo({
+							url: url
+						})
+					}
+				} else {
+					const url = '/pages/tabBar/asymmetric/' + e.url + '/' + e.url
+					console.log(url)
+					if (this.hasLeftWin) {
+						
+						uni.reLaunch({
+							url: url
+						})
+					} else {
+						uni.navigateTo({
+							url: url
+						})
+					}
+				}
+			}
+		}
+	}
+</script>
+
+<style>
+	@import '../../../common/uni-nvue.css';
+</style>

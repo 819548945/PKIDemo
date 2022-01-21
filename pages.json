@@ -1,0 +1,294 @@
+{
+	"leftWindow": {
+		"path": "windows/left-window.vue",
+		"style": {
+			"width": "350px"
+		}
+	},
+	"topWindow": {
+		"path": "windows/top-window.vue",
+		"style": {
+			"height": "60px"
+		}
+	},
+	"pages": [
+		// pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		
+		{
+			"path": "pages/tabBar/asymmetric/asymmetric",
+			"style": {
+				"navigationBarTitleText": "非对称算法",
+				"app-plus": {
+					"bounce": "vertical"
+				}
+			}
+		}
+		,{
+            "path" : "pages/tabBar/symmetric/symmetric",
+            "style": {
+            	"navigationBarTitleText": "对称算法",
+				"app-plus": {
+					"bounce": "vertical"
+				},
+            	"enablePullDownRefresh": false
+            }
+        }
+		,{
+            "path" : "pages/tabBar/digest/digest",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "摘要算法",
+                "enablePullDownRefresh": false
+            }
+            
+        },	
+		{
+			"path": "pages/tabBar/asymmetric/initSM2O/initSM2O",
+			"style": {
+				"navigationBarTitleText": "SM2单证初始化"
+			}
+		},
+		{
+            "path" : "pages/tabBar/asymmetric/sign/sign",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "签名",
+                "enablePullDownRefresh": false
+            }
+            
+        },
+		{
+            "path" : "pages/tabBar/asymmetric/verifyByKeyId/verifyByKeyId",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "内置秘钥验签",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabBar/asymmetric/verifyByCert/verifyByCert",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "公钥证书验签",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabBar/asymmetric/showKeyInfoOne/showKeyInfoOne",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "修改秘钥状态",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabBar/asymmetric/showKeyInfoAll/showKeyInfoAll",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "全量查询",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabBar/asymmetric/encByCert/encByCert",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "内置秘钥加密",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabBar/asymmetric/encByKeyId/encByKeyId",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "内置秘钥加密",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabBar/asymmetric/dec/dec",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "解密",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabBar/asymmetric/readX509/readX509",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "读取X509公钥证书",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabBar/asymmetric/readP7B/readP7B",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "读取P7B证书链",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+      
+        ,{
+            "path" : "pages/tabBar/asymmetric/readX509ByKeyId/readX509ByKeyId",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "读取内置秘钥X509公钥证书",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabBar/asymmetric/initRSAO/initRSAO",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "RSA单证（CA签发X509）",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabBar/asymmetric/initRSAO1/initRSAO1",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "RSA单证（CA签发PFX）",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabBar/asymmetric/initSM2T/initSM2T",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "SM2双证",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabBar/asymmetric/exportPFX/exportPFX",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "导出RSA PFX",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabBar/asymmetric/exportEnvelopedKeyBlob/exportEnvelopedKeyBlob",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "导出SM2 私钥",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabBar/symmetric/encCBC/encCBC",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "加密（CBC）",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabBar/symmetric/decCBC/decCBC",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "解密（CBC）",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabBar/symmetric/encECB/encECB",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "加密（ECB）",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabBar/symmetric/decECB/decECB",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "解密（ECB）",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/tabBar/asymmetric/readX509Base64ByKeyId/readX509Base64ByKeyId",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "导出X509公钥证书",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"subPackages": [],
+	"globalStyle": {
+		"pageOrientation": "portrait",
+		"navigationBarTitleText": "Hello uniapp",
+		"navigationBarTextStyle": "white",
+		"navigationBarBackgroundColor": "#007AFF",
+		"backgroundColor": "#F8F8F8",
+		"backgroundColorTop": "#F4F5F6",
+		"backgroundColorBottom": "#F4F5F6",
+		"mp-360": {
+			"navigationStyle": "custom"
+		},
+		"h5": {
+			"maxWidth": 1190,
+			"navigationBarTextStyle": "black",
+			"navigationBarBackgroundColor": "#F1F1F1"
+		}
+
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#007AFF",
+		"borderStyle": "black",
+		"backgroundColor": "#F8F8F8",
+		"list": [
+			{
+				"pagePath": "pages/tabBar/asymmetric/asymmetric",
+				"text": "Asmmetric\n 非对称算法"
+			},
+			{
+				//"pagePath": "pages/tabBar/component/component",
+				"pagePath": "pages/tabBar/symmetric/symmetric",
+				"text": "Smmetric\n 对称算法"
+			},
+			{
+				"pagePath": "pages/tabBar/digest/digest",
+				"text": " Digest\n摘要算法"
+			}
+			/*
+			,
+			{
+				"pagePath": "pages/tabBar/component/component",
+				"text": "component "
+			},
+			{
+				"pagePath": "pages/tabBar/extUI/extUI",
+				"iconPath": "static/extui.png",
+				"selectedIconPath": "static/extuiHL.png",
+				"text": "扩展组件"
+			}*/
+		]
+	}
+}
